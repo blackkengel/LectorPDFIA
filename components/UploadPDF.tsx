@@ -27,9 +27,11 @@ export default function UploadPDF({ onUploaded }: { onUploaded: (path: string) =
       })
 
       const data = await res.json()
+      
       if (data.success) {
-        const pdfName = data.path.split("/").pop()
-        const publicUrl = `/pdf/${pdfName}`
+        const pdfName = data.url.split("/").pop()
+        const publicUrl = data.url;
+        console.log("data-res",data);
         setStatus(`uploaded file: ${pdfName}`)
         onUploaded(publicUrl)
       } else {
