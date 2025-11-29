@@ -24,9 +24,7 @@ export default function AskBox({
     try {
       const formData = new FormData()
       formData.append("question", message)
-
-      const pdfName = pdfPath.split("/").pop() || pdfPath
-      formData.append("pdf_name", pdfName)
+      formData.append("pdf_name", pdfPath)
 
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_LOCAL}/ask`, {
         method: "POST",
